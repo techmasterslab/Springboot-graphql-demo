@@ -1,0 +1,33 @@
+type Query {
+    getUserById(id: ID!): UserResponse
+    getAllUsers: [UserResponse!]
+}
+
+type Mutation {
+    createUser(userRequest: UserRequest): UserResponse
+    updateUser(id: ID!, userRequest: UserRequest): UserResponse
+    deleteUser(id: ID!): String
+    assignRoleToUser(userId: ID!, roleName: String!): String
+}
+
+input UserRequest {
+    username: String!
+    password: String!
+    email: String!
+    firstName: String
+    lastName: String!
+    status: String!
+    roles: [String!]
+}
+
+type UserResponse {
+    id: ID!
+    username: String!
+    email: String!
+    firstName: String!
+    lastName: String!
+    createdAt: String!
+    updatedAt: String!
+    status: String!
+    roles: [String!]!
+}
